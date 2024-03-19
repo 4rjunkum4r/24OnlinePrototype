@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+
+import Dashboard from "../src/Pages/DashboardPage";
+import LoginPage from "./Pages/LoginPage";
+import FirebaseCRUD from "./components/firebase/firebaseCRUD/crud";
+import 
+
+export const LoginContext = React.createContext();
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+        <BrowserRouter>
+          <Routes>
+            <Route path="*" element={<Navigate to="/crud" />} />
+            <Route path="/crud" element={<FirebaseCRUD/>}/>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/logs" element={<}
+          </Routes>
+        </BrowserRouter>
     </div>
   );
 }
