@@ -1,11 +1,11 @@
 "use client";
-import FirebaseConfig from "../firebaseConfig/config";
+import FirebaseConfig from "./config";
 import { ref, set, get, update, child } from "firebase/database";
 import { useState } from "react";
 
 const database = FirebaseConfig();
 
-function FirebaseCRUD() {
+function StudentLogs() {
   let [logUserName, setLogUserName] = useState("");
   let [loggedIn, setLoggedIn] = useState("");
   let [dataUpload, setDataUpload] = useState("");
@@ -58,7 +58,7 @@ function FirebaseCRUD() {
 
   let UpdateLogs = () => {
     const dbref = ref(database);
-    if (isNullOrWhiteSpace(logs)) {
+    if (isNullOrWhiteSpace(logUserName)) {
       alert("Username is empty ");
       return;
     }
@@ -67,7 +67,7 @@ function FirebaseCRUD() {
       .then((snapshot) => {
         if (snapshot.exists()) {
           update(ref(database, "StudentLogs/" + logUserName), {
-            logs: logs,
+            loggedIn: loggedIn,
             dataUpload: dataUpload,
             dataDownload: dataDownload,
             loggedOut: loggedOut,
@@ -118,9 +118,9 @@ function FirebaseCRUD() {
 <label>Name</label>
       <input
         type="text"
-        value={uname}
+        value={logUserName}
         onChange={(e) => {
-          setUname(e.target.value);
+          setLogUserName(e.target.value);
         }}
       />
       <br />
@@ -130,7 +130,7 @@ function FirebaseCRUD() {
         type="time"
         value={loggedIn}
         onChange={(e) => {
-          setRegistrationNumber(e.target.value);
+          setLoggedIn(e.target.value);
         }}
       />
       <br />
@@ -140,7 +140,7 @@ function FirebaseCRUD() {
         type="number"
         value={dataUpload}
         onChange={(e) => {
-          setPassword(e.target.value);
+          setDataUpload(e.target.value);
         }}
       />
       <br />
@@ -150,7 +150,7 @@ function FirebaseCRUD() {
         type="number"
         value={dataDownload}
         onChange={(e) => {
-          setPhoneNumber(e.target.value);
+          setDataDownload(e.target.value);
         }}
       />
       <br />
@@ -159,7 +159,7 @@ function FirebaseCRUD() {
         type="time"
         value={loggedOut}
         onChange={(e) => {
-          setPhoneNumber(e.target.value);
+          setLoggedOut(e.target.value);
         }}
       />
       <br />
@@ -169,4 +169,4 @@ function FirebaseCRUD() {
       <button onClick={SelectLogs}>SelectLogs</button>
   </>);
 }
-export default FirebaseCRUD;
+export default StudentLogs;

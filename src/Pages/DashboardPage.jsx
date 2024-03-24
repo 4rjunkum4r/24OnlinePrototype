@@ -1,9 +1,10 @@
-import React from "react";
-
-export default function Dashboard() {
+import { RealtimeData } from "../components/realtimeData/data";
+import "bootstrap/dist/css/bootstrap.min.css";
+function App() {
   return (
     <>
-      <h1>This will be the dashboard</h1>
+      <RealtimeData />
     </>
   );
 }
+export default App;
