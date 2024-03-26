@@ -1,10 +1,9 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import React, { useState, useEffect } from "react";
 
-import Dashboard from "../src/Pages/DashboardPage";
-import LoginPage from "./Pages/LoginPage";
-import FirebaseCRUD from "./components/firebase/firebaseCRUD/crud";
-import StudentLogs from "./components/firebase/firebaseCRUD/studentLog";
+import DashboardPage from "./pages/DashboardPage";
+import LoginPage from "./pages/LoginPage";
+import FirebaseCRUD from "./components/CRUD/firebaseCRUD";
+import StudentLogs from "./components/CRUD/studentLog"
 
 function App() {
 
@@ -14,7 +13,7 @@ function App() {
           <Routes>
             <Route path="*" element={<Navigate to="/login" />} />
             <Route path="/crud" element={<FirebaseCRUD/>}/>
-            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/logs" element={<StudentLogs/>}/>
           </Routes>

@@ -1,5 +1,5 @@
 "use client";
-import FirebaseConfig from "../../backend/database/firebaseConfig/FirebaseConfig";
+import FirebaseConfig from "../../backend/database/firebaseConfig/firebaseConfig";
 import { ref, set, get, update, remove, child } from "firebase/database";
 import { useState } from "react";
 
@@ -126,7 +126,7 @@ function FirebaseCRUD() {
         //   setRegistrationNumber(snapshot.val().RegistrationNumber);
         //   setPassword(snapshot.val().Password);
         //   setPhoneNumber(snapshot.val().PhoneNumber);
-        <Dashboard/>
+        
         
         } else {
           alert("No data available");
